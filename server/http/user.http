@@ -1,0 +1,58 @@
+### Register user (admin@user.com/admin just@user.com/justuser)
+POST http://localhost:5001/api/registration
+Content-Type: application/json
+
+{
+  "email": "just@user.com",
+  "password": "justuser"
+}
+
+### Register user (admin@user.com/admin just@user.com/justuser)
+POST http://localhost:5001/api/registration
+Content-Type: application/json
+
+{
+  "email": "another@user.com",
+  "password": "anotheruser"
+}
+
+### Register user ERROR
+POST http://localhost:5001/api/registration
+Content-Type: application/json
+
+{
+  "email": "usr_err@user.com1",
+  "password": 12
+}
+
+### Activate user
+GET http://localhost:5001/api/activate/acbd3fc4-10a8-476c-8cf3-a1b657b37cab
+
+### Login user (admin@user.com/admin just@user.com/justuser)
+POST http://localhost:5001/api/login
+Content-Type: application/json
+
+{
+  "email": "just@user.com",
+  "password": "justuser"
+}
+
+### Login user (admin@user.com/admin just@user.com/justuser)
+POST http://localhost:5001/api/login
+Content-Type: application/json
+
+{
+  "email": "another@user.com",
+  "password": "anotheruser"
+}
+
+### Logout user
+POST http://localhost:5001/api/logout
+Content-Type: application/json
+
+### Refresh token
+GET http://localhost:5001/api/refresh
+
+### Get All users
+GET http://localhost:5001/api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZDU0NDM5MzU4YTI4ZDdlZDBlZTA2NSIsImVtYWlsIjoianVzdEB1c2VyLmNvbSIsImlzQWN0aXZhdGVkIjp0cnVlLCJpYXQiOjE2OTE3Njc1NTQsImV4cCI6MTY5MTc2OTM1NH0.WUU0JlDBPPbU4J2luJryy60CoInLKZLI5HZCuhbGd1w
