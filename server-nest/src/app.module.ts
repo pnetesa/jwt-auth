@@ -1,15 +1,19 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { UserService } from './services/user-service';
-import { User, UserSchema } from './models/user';
+import { UsersModule } from './users/users.module';
+import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://VERY-SECRET-URI.mongodb.net/?retryWrites=true&w=majority'),
-    MongooseModule.forFeature([{ name: User.name, schema: UserSchema }])
+    ConfigModule.forRoot({
+      envFilePath: `./config/.${process.env.NODE_ENV}.env`,
+    }),
+    MongooseModule.forRoot(process.env.MONGODB_URI),
+    UsersModule,
+    AuthModule,
   ],
-  controllers: [AppController],
-  providers: [UserService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
