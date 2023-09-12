@@ -7,18 +7,21 @@ import {
   Redirect,
   Req,
   Res,
+  UsePipes,
 } from '@nestjs/common';
 import { UserCredsDto } from '../dto/user-creds-dto';
 import { AuthService } from './auth.service';
 import { AuthDto } from '../dto/auth-dto';
 import * as process from 'process';
 import { Request, Response } from 'express';
+import { ValidationPipe } from '../pipes/validation.pipe';
 const REFRESH_TOKEN_KEY = 'refreshToken';
 
 @Controller()
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  @UsePipes(ValidationPipe)
   @Post('/registration')
   async register(
     @Body() userCredsDto: UserCredsDto,
@@ -42,6 +45,7 @@ export class AuthController {
     return { url: process.env.CLIENT_URL };
   }
 
+  @UsePipes(ValidationPipe)
   @Post('/login')
   async login(
     @Body() userCredsDto: UserCredsDto,

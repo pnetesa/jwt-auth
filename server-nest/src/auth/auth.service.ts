@@ -23,7 +23,6 @@ export class AuthService {
   ) {}
 
   public async register(userCredsDto: UserCredsDto): Promise<AuthDto> {
-    // Validate(userRegisterDto)
     const { email, password } = userCredsDto;
     const candidate = await this.userModel.findOne({ email }).exec();
     if (candidate) {
@@ -71,7 +70,6 @@ export class AuthService {
   }
 
   public async login(userCredsDto: UserCredsDto): Promise<AuthDto> {
-    // Validate(userCredsDto)
     const { email, password } = userCredsDto;
     const user = await this.userModel.findOne({ email }).exec();
     if (!user) {
