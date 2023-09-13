@@ -1,7 +1,11 @@
 import axios from 'axios';
 import { AuthResponse } from '../models/response/auth-response';
 
-export const API_URL = 'http://localhost:5001/api';
+// Express APP
+// export const API_URL = 'http://localhost:5001/api';
+
+// Nest.js APP
+export const API_URL = 'http://localhost:6001/api';
 
 const $api = axios.create({
   withCredentials: true,
